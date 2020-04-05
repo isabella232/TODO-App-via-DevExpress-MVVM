@@ -14,4 +14,4 @@ This sample demonstrates a number of concepts used in DevExpress MVVM Framework:
 * Services
 * Messenger
 
-The "MVVM Best Practices" demo provides a module that provides a step-by-step description on how this sample module was created. If you have the DevExpress Demo Center of version 20.1 or newer installed, click [this link](dxdemo://Win/MVVM/MainDemo/TodoAppGuide/Preparation:_Designing_the_Data_Model_(Usage_scenarios).Query_items_count_from_application_data_storage) to run this module.
+The **"MVVM Best Practices"** demo provides a module that provides a step-by-step description on how this sample module was created. If you have the DevExpress Demo Center of version 20.1 or newer installed, click [this link](dxdemo://Win/MVVM/MainDemo/TodoAppGuide/Preparation:_Designing_the_Data_Model_(Usage_scenarios).Query_items_count_from_application_data_storage) to run this module.
