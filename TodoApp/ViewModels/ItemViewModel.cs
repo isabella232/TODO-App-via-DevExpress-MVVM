@@ -6,6 +6,7 @@
 
     public class ItemViewModel : ISupportParameter {
         public ItemViewModel() {
+            // Start listen the ReloadRequired message 
             Messenger.Default.Register<ReloadRequired>(this, OnReloadRequired);
         }
         void OnReloadRequired(ReloadRequired message) {
@@ -21,14 +22,17 @@
         void ReloadItem(int id) {
             Item = Repository.LoadItem(id);
         }
+        // Current item
         public virtual TodoItem Item {
             get;
             protected set;
         }
+        // Modification flag
         public virtual bool HasChanges {
             get;
             protected set;
         }
+        // View's Title
         public string Title {
             get {
                 if(Item == null)
@@ -45,6 +49,7 @@
         }
         protected void OnItemChanged() {
             HasChanges = false;
+            this.RaisePropertyChanged(x => x.Title);
             this.RaiseCanExecuteChanged(x => x.Save());
             this.RaiseCanExecuteChanged(x => x.Delete());
         }
@@ -60,8 +65,16 @@
         }
         public void Save() {
             bool isNew = IsNew;
-            int id = Repository.Save(Item);
-            Messenger.Default.Send(isNew ? ReloadRequired.FromNew(id) : ReloadRequired.FromID(id));
+            int savedId = Repository.Save(Item);
+            if(isNew) {
+                // Sending the ReloadRequired message for new item
+                Messenger.Default.Send(ReloadRequired.FromNew(savedId));
+            }
+            else {
+                // Sending the ReloadRequired message for the specific item
+                Messenger.Default.Send(ReloadRequired.FromId(savedId));
+            }
+
             HasChanges = false;
         }
         public bool CanDelete() {
@@ -69,6 +82,7 @@
         }
         public void Delete() {
             if(Repository.Delete(Item.Id)) {
+                // Sending the ReloadRequired message for all items
                 Messenger.Default.Send(ReloadRequired.All);
                 Close();
             }

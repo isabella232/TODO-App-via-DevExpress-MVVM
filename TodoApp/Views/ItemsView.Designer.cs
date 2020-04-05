@@ -107,7 +107,6 @@
             tableSpan1.RowSpan = 2;
             itemTemplateBase1.Spans.Add(tableSpan1);
             this.listBoxControl.Templates.Add(itemTemplateBase1);
-            this.listBoxControl.ContextButtonClick += new DevExpress.Utils.ContextItemClickEventHandler(this.ListBoxControl1_ContextButtonClick);
             this.listBoxControl.CustomizeContextItem += new DevExpress.XtraEditors.ViewInfo.ListBoxControlContextButtonCustomizeEventHandler(this.ListBoxControl1_CustomizeContextItem);
             this.listBoxControl.CustomizeItem += new DevExpress.XtraEditors.CustomizeTemplatedItemEventHandler(this.listBoxControl1_CustomizeItem);
             // 
