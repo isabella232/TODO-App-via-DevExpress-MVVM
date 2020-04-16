@@ -11,7 +11,7 @@
         }
         // This is ViewModel for our Application
         public AppViewModel() {
-            Title = "Getting started witn MVVM - Todo App";
+            Title = "Getting started witn MVVM - Todo App (C#)";
         }
         // This is our Application's Title
         public string Title {
